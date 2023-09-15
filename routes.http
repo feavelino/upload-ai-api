@@ -1,2 +1,31 @@
 # @name HelloWorld
 get http://localhost:3333/
+
+###
+
+# @name get-prompts
+get http://localhost:3333/prompts
+
+###
+
+# @name upload
+post http://localhost:3333/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="example.mp3"
+Content-Type: audio/mpeg
+
+< ./example.mp3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+###
+
+
+# @name create-transcription
+post http://localhost:3333/videos/5d56c37b-e62d-4abf-ad77-cccb1bee314e/transcription
+Content-Type: application/json
+
+{
+    "prompt": "clean architecture, ddd"
+}
+###
